@@ -9,7 +9,7 @@ int main(int argc, char** argv){
 	// Iterator variables
 	unsigned int j,k;
 	// Matrix Object
-	my_prec **dataMatrix;
+	my_prec **dataMatrix, **dataT, **XtX, **Inv;
 	// Timer example
 	SimpleTimer_t t1,t2;
 	// Random seed, set the seed to the random number generator
@@ -25,12 +25,13 @@ int main(int argc, char** argv){
 	// Filling with rnd numbers
 	SetMatrixRandom(dataMatrix,size_data,size_X);
 	// Transpose
-	my_prec **dataT = CREATE_MATRIX(size_X,size_data);
-	MatrixTranspose(dataMatrix,size_data,size_X);
+	dataT = CREATE_MATRIX(size_X,size_data);
+	MatrixTranspose(dataMatrix,dataT,size_data,size_X);
 	// Multiplication of transpose with data
-	my_prec **XtX = CREATE_MATRIX(size_data,size_data);
+	XtX = CREATE_MATRIX(size_data,size_data);
 	MatrixMultiplication(dataT,dataMatrix,XtX,size_data,size_data,size_X);
-
+	// Inverse
+	MatrixInversion(XtX,Inv,size_data);
 	// Set all values of the matrix to 1
 	/*for( j=0; j < size_data; j++ )
 		for( k=0; k < size_X; k++ )

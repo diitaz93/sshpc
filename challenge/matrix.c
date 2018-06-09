@@ -42,6 +42,7 @@ void MatrixMultiplication(my_prec **A, my_prec **B, my_prec **C, unsigned int r_
 	{
 		for(j=0; j<c_B; j++)
 		{
+			C[i][j] = 0;
 			for(k=0; k<rc; k++)
 			{
 				C[i][j] = C[i][j] + A[i][k] * B[k][j];
