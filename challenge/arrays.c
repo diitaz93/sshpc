@@ -44,4 +44,63 @@ my_prec **CREATE_MATRIX(const unsigned int a,const unsigned int b){
 	return v;
 };
 
+/* Copy Matrix Code
+ * Copy all elements from matrix A to B
+*/
+void CopyMatrix(my_prec **A, my_prec **B, unsigned int rows, unsigned int cols)
+{
+        int j,k;
+        for( j=0; j<rows; j++)
+        {
+                for( k=0; k<cols; k++)
+                {
+                        B[j][k] = A[j][k];
+                }
+        }
+}
+
+void gaussRed(my_prec **outMat, unsigned int m, unsigned int n)
+{
+	double t;
+	int i,j,k,h,l;
+	for(h=0;h<m;h++)
+	{
+		for (i=h;i<m;i++)
+		{
+			t=outMat[i][h];
+			for (j=0;j<n;j++)
+			{
+				outMat[i][j]/=t;/* Paso 1*/
+			}
+		}
+			for(k=h+1;k<m;k++)
+			{
+				for(l=h;l<n;l++)
+				{
+					outMat[k][l]-=outMat[h][l];
+				}
+			}
+	}
+}
+
+void gaussJordan(my_prec **mat, unsigned int m, unsigned int n)
+{
+    gaussRed(mat,m,n);
+
+    double t;
+    int h,i,j;
+    for(h=m-1;h>=0;h--)
+    {
+        for(i=h;i>=0;i--)
+        {
+            t=mat[i-1][h];
+            for(j=0;j<n;j++)
+            {
+                mat[i-1][j]+=(-t)*mat[h][j];
+            }
+        }
+    }
+}
+
+
 // Q: Can you draw a map of how the memory is allocated in memory?

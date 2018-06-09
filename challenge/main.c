@@ -16,7 +16,7 @@ int main(int argc, char** argv){
     srand(seed);
 
 	// Setting the problem size!
-	samples = 8192; size_X = 128; size_data = 512;
+	samples = 8192; size_X = 10; size_data = 15;
 
 	// Creating the Matrix
 	dataMatrix = CREATE_MATRIX(size_data,size_X);
