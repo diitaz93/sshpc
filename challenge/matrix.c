@@ -24,7 +24,6 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
 void MatrixTranspose(my_prec **A, my_prec **T, unsigned int rows, unsigned int cols)
 {
 	// Temporal matrix T to store values during transposition
-	CopyMatrix(A,T,rows,cols);
 	int j,k;
 	for( j=0; j<rows; j++)
 	{

@@ -25,6 +25,7 @@ int main(int argc, char** argv){
 	// Filling with rnd numbers
 	SetMatrixRandom(dataMatrix,size_data,size_X);
 	// Transpose
+	my_prec **dataT = CREATE_MATRIX(size_X,size_data);
 	MatrixTranspose(dataMatrix,size_data,size_X);
 	// Multiplication of transpose with data
 	my_prec **XtX = CREATE_MATRIX(size_data,size_data);
