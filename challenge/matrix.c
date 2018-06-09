@@ -20,17 +20,17 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
 };
 
 // Matrix Transpose Code
-void MatrixTranspose(my_prec **A, unsigned int rows, unsigned int cols)
+// Calculates the transpose of A in T
+void MatrixTranspose(my_prec **A, my_prec **T, unsigned int rows, unsigned int cols)
 {
 	// Temporal matrix T to store values during transposition
-	my_prec **T = CREATE_MATRIX(rows,cols);
 	CopyMatrix(A,T,rows,cols);
 	int j,k;
 	for( j=0; j<rows; j++)
 	{
 		for( k=0; k<cols; k++)
 		{
-			A[k][j] = T[j][k];
+			T[k][j] = A[j][k];
 		}
 	}
 }

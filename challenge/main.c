@@ -18,15 +18,24 @@ int main(int argc, char** argv){
 	// Setting the problem size!
 	samples = 8192; size_X = 10; size_data = 15;
 
+	// Collect start time for this snippet
+        SimpleTimer_start( &t1 );
 	// Creating the Matrix
 	dataMatrix = CREATE_MATRIX(size_data,size_X);
+	// Filling with rnd numbers
+	SetMatrixRandom(dataMatrix,size_data,size_X);
+	// Transpose
+	MatrixTranspose(dataMatrix,size_data,size_X);
+	// Multiplication of transpose with data
+	my_prec **XtX = CREATE_MATRIX(size_data,size_data);
+	MatrixMultiplication(dataT,dataMatrix,XtX,size_data,size_data,size_X);
 
-	// Collect start time for this snippet
-	SimpleTimer_start( &t1 );
 	// Set all values of the matrix to 1
-	for( j=0; j < size_data; j++ )
+	/*for( j=0; j < size_data; j++ )
 		for( k=0; k < size_X; k++ )
 			dataMatrix[j][k] = 0.0;
+	*/
+
 	// Collect stop time
 	SimpleTimer_stop( &t1 );
 	// Print duration
